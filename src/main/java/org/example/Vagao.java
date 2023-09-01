@@ -3,12 +3,12 @@ package org.example;
 public class Vagao {
     private int idVagao;
     private double capMaxdeCarga;
-    private Composicao composicaoVagao;
+    private Composicao composicao;
 
-    public Vagao (int idVagao, double capMaxdeCarga, Composicao composicaoVagao){
+    public Vagao (int idVagao, double capMaxdeCarga, Composicao composicao){
         this.idVagao = idVagao;
         this.capMaxdeCarga = capMaxdeCarga;
-        this.composicaoVagao = composicaoVagao;    
+        this.composicao = composicao;    
     }
 
     public int getIdVagao() {
@@ -28,10 +28,10 @@ public class Vagao {
     }
 
     public Composicao getComposicaoVagao() {
-        return composicaoVagao;
+        return composicao;
     }
 
-    public void setComposicaoVagao(Composicao composicaoVagao) {
-        this.composicaoVagao = composicaoVagao;
+    public void setComposicaoVagao(Composicao composicao) {
+        this.composicao = composicao;
     }
 }

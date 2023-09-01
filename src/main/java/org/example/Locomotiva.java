@@ -4,13 +4,13 @@ public class Locomotiva {
     private int idLocomotiva;
     private float pesoMaximo;
     private int numeroMaxVagoes;
-    private Composicao composicaoVagao;
+    private Composicao composicao;
 
-    public Locomotiva(int idLocomotiva, float pesoMaximo, int numeroMaxVagoes, Composicao composicaoVagao){
+    public Locomotiva(int idLocomotiva, float pesoMaximo, int numeroMaxVagoes, Composicao composicao){
         this.idLocomotiva = idLocomotiva;
         this.pesoMaximo = pesoMaximo;
         this.numeroMaxVagoes = numeroMaxVagoes;
-        this.composicaoVagao = composicaoVagao;
+        this.composicao = composicao;
     }
 
     public int getIdLocomotiva() {
@@ -37,12 +37,12 @@ public class Locomotiva {
         this.numeroMaxVagoes = numeroMaxVagoes;
     }
 
-    public Composicao getComposicaoVagao() {
-        return composicaoVagao;
+    public Composicao getComposicao() {
+        return composicao;
     }
 
-    public void setComposicaoVagao(Composicao composicaoVagao) {
-        this.composicaoVagao = composicaoVagao;
+    public void setComposicao(Composicao composicao) {
+        this.composicao = composicao;
     }
 
     
