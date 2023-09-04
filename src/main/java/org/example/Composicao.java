@@ -1,23 +1,23 @@
 package org.example;
 
 public class Composicao {
-    private int identificadorComposicao;
+    private String idComposicao;
     private int qtdLocomotivas;
     private Locomotiva locomotiva;
     private int qtdVagao;
     private Vagao vagao;
 
-    public Composicao(int identificadorComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
+    public Composicao(String idComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
             Vagao vagao) {
-        this.identificadorComposicao = identificadorComposicao;
+        this.idComposicao = idComposicao;
         this.qtdLocomotivas = qtdLocomotivas;
         this.locomotiva = locomotiva;
         this.qtdVagao = qtdVagao;
         this.vagao = vagao;
     }
 
-    public int getIdentificadorComposicao() {
-        return identificadorComposicao;
+    public String getidComposicao() {
+        return idComposicao;
     }
 
     public int getQtdLocomotivas() {
@@ -32,8 +32,8 @@ public class Composicao {
         return locomotiva;
     }
 
-    public void setLocomotiva(Locomotiva locomotiva) {
-        this.locomotiva = locomotiva;
+    public void setLocomotiva(Locomotiva[] locomotiva, int posicao) {
+        this.locomotiva = locomotiva[posicao];
     }
 
     public int getQtdVagao() {
@@ -52,23 +52,23 @@ public class Composicao {
         this.vagao = vagao;
     }
 
-    public boolean engataLocomotiva(Locomotiva locomotiva) {
+    public boolean engataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
         if (getLocomotiva() == null) {
             estado = true;
-            setLocomotiva(locomotiva);
-            System.out.println("Locomotiva encaixada!");
+            setLocomotiva(locomotiva, posicao);
+            locomotiva[posicao].setComposicao(composicao[posicao]);
         } else {
-            System.out.println("Locomotiva não encaixou!");
+            estado = false;
         }
         return estado;
     }
 
-    public boolean desengataLocomotiva(Locomotiva locomotiva) {
+    public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
         if (getLocomotiva() != null) {
             estado = true;
-            setLocomotiva(null);
+            composicao[posicao].setLocomotiva ( null , posicao);
             System.out.println("Locomotiva desengatada");
         } else {
             System.out.println("A locomotiva não está engatada");
@@ -98,5 +98,13 @@ public class Composicao {
             System.out.println("O vagão não está engatado");
         }
         return estado;
+    }
+
+    public void toString(Composicao[] composicao, int posicao) {
+        System.out
+                .println("ID:" + composicao[posicao].getidComposicao() + "\nQuantidade Locomotivas: "
+                        + composicao[posicao].getQtdLocomotivas() + "\nLocomotiva: "
+                        + composicao[posicao].getLocomotiva() + "\nQuantidade Vagões: "
+                        + composicao[posicao].getQtdVagao() + "\nVagão: " + composicao[posicao].getVagao());
     }
 }

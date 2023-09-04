@@ -44,7 +44,4 @@ public class Locomotiva {
     public void setComposicao(Composicao composicao) {
         this.composicao = composicao;
     }
-
-    
-    
 }

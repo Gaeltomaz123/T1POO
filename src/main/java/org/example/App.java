@@ -1,31 +1,19 @@
 package org.example;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        Locomotiva locomotivaUm = new Locomotiva(0, 0, 0, null);
-        Vagao vagaoUm = new Vagao(0, 0, null);
-        Composicao composicaoUm = new Composicao(1, 0, null, 0, null);
-        
-        //ENGATANDO LOCOMOTIVA
-        System.out.println("Antes: "+composicaoUm.getLocomotiva());
-        composicaoUm.engataLocomotiva(locomotivaUm);
-        System.out.println("Depois: "+ composicaoUm.getLocomotiva());
+public class App {
+    public static void main(String[] args) {
+        Locomotiva[] arrayLocomotivas = new Locomotiva[5];
+        Vagao[] arrayVagao = new Vagao[5];
+        Composicao[] arrayComposicao = new Composicao[5];
 
-        //ENGATANDO VAGÃO
-        System.out.println("Antes: "+composicaoUm.getVagao());
-        composicaoUm.engataVagao(vagaoUm);
-        System.out.println("Depois: "+ composicaoUm.getVagao());
+        arrayComposicao[0] = new Composicao(0, 0, null, 0, null);
+        arrayLocomotivas[0] = new Locomotiva(0, 0, 0, null);
+        arrayVagao[0] = new Vagao(0, 0, null);
 
-        //DESENGATANDO LOCOMOTIVA
-        System.out.println("Antes: "+composicaoUm.getLocomotiva());
-        composicaoUm.desengataLocomotiva(locomotivaUm);
-        System.out.println("Depois: "+ composicaoUm.getLocomotiva());
+        arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+        arrayComposicao[0].toString(arrayComposicao, 0);
 
-        //DESENGATANDO VAGÃO
-        System.out.println("Antes: "+composicaoUm.getVagao());
-        composicaoUm.desengataVagao(vagaoUm);
-        System.out.println("Depois: "+ composicaoUm.getVagao());
-    } 
+        arrayComposicao[0].desengataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+
+    }
 }
