@@ -1,13 +1,13 @@
 package org.example;
 
 public class Composicao {
-    private String idComposicao;
+    private int idComposicao;
     private int qtdLocomotivas;
     private Locomotiva locomotiva;
     private int qtdVagao;
     private Vagao vagao;
 
-    public Composicao(String idComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
+    public Composicao(int idComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
             Vagao vagao) {
         this.idComposicao = idComposicao;
         this.qtdLocomotivas = qtdLocomotivas;
@@ -16,7 +16,7 @@ public class Composicao {
         this.vagao = vagao;
     }
 
-    public String getidComposicao() {
+    public int getidComposicao() {
         return idComposicao;
     }
 
