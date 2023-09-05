@@ -1,12 +1,9 @@
 package org.example;
 import java.util.Scanner;
 public class App {
-    
+        static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
-        String escolhaMenu;
-        String escolhaEditar;
-        try (Scanner teclado = new Scanner(System.in)) {
-            Locomotiva[] arrayLocomotivas = new Locomotiva[5];
+        Locomotiva[] arrayLocomotivas = new Locomotiva[5];
             Vagao[] arrayVagao = new Vagao[5];
             Composicao[] arrayComposicao = new Composicao[5];
 
@@ -18,13 +15,23 @@ public class App {
             arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
             // arrayComposicao[0].toString(arrayComposicao, 0);
             // arrayComposicao[0].desengataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+            while (menu());
+            
+        }
 
+
+    public static boolean menu(){
+        String escolhaMenu;
+        String escolhaEditar;
+        
             
             System.out.println("\n[1] ...... Criar um trem");
             System.out.println("\n[2] ...... Editar um trem");
             System.out.println("\n[3] ...... Listar todos os trens criados"); //todos os trens que estao no patio
             System.out.println("\n[4] ...... Desfazer um trem");
             System.out.println("\n[5] ...... Sair");
+            System.out.println("\n..................................");
+            System.out.println("");
 
             escolhaMenu = teclado.next();
         
@@ -41,6 +48,8 @@ public class App {
                 System.out.println("\n[4] ...... Listar locomotivas livres");
                 System.out.println("\n[5] ...... Listar os vagões livres");
                 System.out.println("\n[6] ...... Voltar ao menu");
+                System.out.println("\n..................................");
+                System.out.println("");
 
                 escolhaEditar = teclado.next();
                 switch(escolhaEditar){
@@ -81,11 +90,14 @@ public class App {
             }
             case "5": {
                 //sair
-                break;
+                return false;
+                
             }
 
             }
-        }
-
+            
+        
+        return true;
     }
+    
 }
