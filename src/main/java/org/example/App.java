@@ -7,11 +7,17 @@ public class App {
         Composicao[] arrayComposicao = new Composicao[5];
 
         arrayComposicao[0] = new Composicao(0, 0, null, 0, null);
+        arrayComposicao[1] = new Composicao(1, 0, null, 0, null);
         arrayLocomotivas[0] = new Locomotiva(0, 0, 0, null);
+        arrayLocomotivas[1] = new Locomotiva(1, 0, 0, null);
+        arrayLocomotivas[2] = new Locomotiva(2, 0, 0, null);
         arrayVagao[0] = new Vagao(0, 0, null);
 
+        arrayComposicao[0].criarComposicao(arrayLocomotivas, 0, arrayComposicao);
+        arrayComposicao[1].criarComposicao(arrayLocomotivas, 1, arrayComposicao);
 
-        arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+        arrayComposicao[0].apagarComposicao(arrayLocomotivas, 1, arrayComposicao);
+        // arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
         // arrayComposicao[0].toString(arrayComposicao, 0);
         // arrayComposicao[0].desengataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
     }

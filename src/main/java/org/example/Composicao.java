@@ -33,7 +33,12 @@ public class Composicao {
     }
 
     public void setLocomotiva(Locomotiva[] locomotiva, int posicao) {
-        this.locomotiva = locomotiva[posicao];
+        if (locomotiva == null) {
+            this.locomotiva = null;
+        } else {
+            this.locomotiva = locomotiva[posicao];
+        }
+
     }
 
     public int getQtdVagao() {
@@ -52,54 +57,49 @@ public class Composicao {
         this.vagao = vagao;
     }
 
+    public boolean criarComposicao(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+        boolean estado = false;
+        for (int i = 0; i < locomotiva.length; i++) {
+            if (locomotiva[i] != null) {
+                composicao[posicao].setLocomotiva(locomotiva, i);
+                locomotiva[i] = null;
+                composicao[posicao].setQtdLocomotivas(composicao[posicao].getQtdLocomotivas() + 1);
+                break;
+            }
+        }
+        return estado;
+    }
+
+    public boolean apagarComposicao(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+        boolean estado = false;
+
+        for (int i = 0; i < locomotiva.length; i++) {
+            if (locomotiva[i] == null) {
+                locomotiva[i] = composicao[posicao].getLocomotiva();
+                composicao[posicao].setLocomotiva(null, posicao);
+                break;
+            }
+        }
+        return estado;
+    }
+
     public boolean engataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
-        if (getLocomotiva() == null) {
-            estado = true;
-            setLocomotiva(locomotiva, posicao);
-            locomotiva[posicao].setComposicao(composicao[posicao]);
-        } else {
-            System.out.println("A locomotiva não foi engatada!");
-            estado = false;
-        }
         return estado;
     }
 
     public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
-        int cont = 0;
-        locomotiva[cont] = locomotiva[posicao]; 
-        if (getLocomotiva() != null) {
-            estado = true;
-            System.out.println("Locomotiva desengatada!");
-            composicao[posicao].setLocomotiva (null , posicao);
-        } else {
-            System.out.println("A locomotiva não está engatada");
-        }
         return estado;
     }
 
     public boolean engataVagao(Vagao vagao) {
         boolean estado = false;
-        if (getVagao() == null) {
-            estado = true;
-            setVagao(vagao);
-            System.out.println("Vagão encaixado!");
-        } else {
-            System.out.println("Vagão não encaixou!");
-        }
         return estado;
     }
 
     public boolean desengataVagao(Vagao vagao) {
         boolean estado = false;
-        if (getVagao() != null) {
-            estado = true;
-            setVagao(null);
-            System.out.println("Vagão desengatado");
-        } else {
-            System.out.println("O vagão não está engatado");
-        }
         return estado;
     }
 
