@@ -17,9 +17,9 @@ public class App {
         arrayComposicao[0].criarComposicao(arrayLocomotivas, 0, arrayComposicao);
         arrayComposicao[1].criarComposicao(arrayLocomotivas, 1, arrayComposicao);
 
-            arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
-            // arrayComposicao[0].toString(arrayComposicao, 0);
-            // arrayComposicao[0].desengataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+        arrayComposicao[0].engataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
+        // arrayComposicao[0].toString(arrayComposicao, 0);
+        // arrayComposicao[0].desengataLocomotiva(arrayLocomotivas, 0, arrayComposicao);
             while (menu());
             
         }
