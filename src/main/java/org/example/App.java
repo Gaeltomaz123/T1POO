@@ -4,8 +4,17 @@ import java.util.Scanner;
 
 public class App {
     static Scanner teclado = new Scanner(System.in);
+    
 
     public static void main(String[] args) {
+        System.out.printf("\f");
+
+        while (menu())
+            ;
+
+    }
+
+    public static boolean menu() {
         Locomotiva[] arrayLocomotivas = new Locomotiva[5];
         Vagao[] arrayVagao = new Vagao[5];
         Composicao[] arrayComposicao = new Composicao[5];
@@ -34,29 +43,6 @@ public class App {
         arrayComposicao[2].apagarComposicao(arrayLocomotivas, 2, arrayComposicao);
         arrayComposicao[4].apagarComposicao(arrayLocomotivas, 4, arrayComposicao);
 
-        
-        for (int i = 0; i < arrayLocomotivas.length; i++) {
-            if (arrayLocomotivas[i] != null) {
-                System.out.println("Locomotiva " + arrayLocomotivas[i].getIdLocomotiva() +
-                        " está disponível!");
-            }
-        }
-
-        for (int i = 0; i < arrayComposicao.length; i++) {
-            if (arrayComposicao[i] != null) {
-                arrayComposicao[i].toString(arrayComposicao, i);
-                System.out.println();
-            } else {
-                System.out.println("Composição " + i + " não existe!\n");
-            }
-        }
-
-        while (menu())
-            ;
-
-    }
-
-    public static boolean menu() {
         String escolhaMenu;
         String escolhaEditar;
         boolean controlaSwitchEdicao = true;
@@ -73,11 +59,19 @@ public class App {
 
         switch (escolhaMenu) {
             case "1": {
+                System.out.println("..........................");
+                System.out.println("Você selecionou a opção 1");
+                System.out.println("..........................");
                 // Criar um trem
                 break;
             }
             case "2": {
+                    System.out.println("..........................");
+                    System.out.println("Você selecionou a opção 2");
+                    System.out.println("..........................");
                 do {
+
+                    
                     System.out.println("\n[1] ...... Inserir uma locomotiva");
                     System.out.println("\n[2] ...... Inserir um vagão");
                     System.out.println("\n[3] ...... Remover um vagão");
@@ -91,33 +85,56 @@ public class App {
 
                     switch (escolhaEditar) {
                         case "1": {
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 1");
+                            System.out.println("..........................");
                             // inserir uma locomotiva
                             break;
                         }
                         case "2": {
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 2");
+                            System.out.println("..........................");
                             // inserir um vagão
                             break;
                         }
                         case "3": {
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 3");
+                            System.out.println("..........................");
                             // remover o ultimo elemento do trem
                             break;
                         }
                         case "4": {
-                            // Listar locomotivas livres
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 4");
+                            System.out.println("..........................");
+                            for (int i = 0; i < arrayLocomotivas.length; i++) {
+                                if (arrayLocomotivas[i] != null) {
+                                    System.out.println("Locomotiva " + arrayLocomotivas[i].getIdLocomotiva() +
+                                            " está disponível!");
+                                    System.out.println("");
+                                }
+                            }
                             break;
                         }
                         case "5": {
-                            // Listar vagões livres
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 5");
+                            System.out.println("..........................");
                             break;
                         }
                         case "6": {
-                            // Encerrar edição do trem
+                            System.out.println("..........................");
+                            System.out.println("Você selecionou a opção 6");
+                            System.out.println("..........................");
                             controlaSwitchEdicao = false;
                             break;
 
                         }
                         default: {
                             System.out.println("Opção Inválida");
+                            System.out.println("");
                             break;
                         }
                     }
@@ -125,10 +142,23 @@ public class App {
                 break;
             }
             case "3": {
-                // Listar as composições
+                System.out.println("..........................");
+                System.out.println("Você selecionou a opção 3");
+                System.out.println("..........................");
+                for (int i = 0; i < arrayComposicao.length; i++) {
+            if (arrayComposicao[i] != null) {
+                arrayComposicao[i].toString(arrayComposicao, i);
+                System.out.println();
+            } else {
+                System.out.println("Composição " + i + " não existe!\n");
+            }
+        }
                 break;
             }
             case "4": {
+                System.out.println("..........................");
+                System.out.println("Você selecionou a opção 4");
+                System.out.println("..........................");
                 // Desfazer um trem
                 break;
             }
