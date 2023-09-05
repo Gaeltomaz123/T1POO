@@ -23,7 +23,7 @@ public class App {
     public static boolean menu(){
         String escolhaMenu;
         String escolhaEditar;
-        
+        boolean controlaSwitchEdicao = true;
             
             System.out.println("\n[1] ...... Criar um trem");
             System.out.println("\n[2] ...... Editar um trem");
@@ -34,14 +34,14 @@ public class App {
             System.out.println("");
 
             escolhaMenu = teclado.next();
-        
+            
         switch(escolhaMenu){
             case "1": {
                 //Criar um trem
                 break;
             }
             case "2": {
-
+                do{
                 System.out.println("\n[1] ...... Inserir uma locomotiva");
                 System.out.println("\n[2] ...... Inserir um vagão");
                 System.out.println("\n[3] ...... Remover um vagão");
@@ -52,6 +52,7 @@ public class App {
                 System.out.println("");
 
                 escolhaEditar = teclado.next();
+                
                 switch(escolhaEditar){
                     case "1": {
                         //inserir uma locomotiva
@@ -75,9 +76,16 @@ public class App {
                     }
                     case "6":{
                         //Encerrar edição do trem
+                        controlaSwitchEdicao = false;
                         break;
+                        
+                    }
+                    default : {
+                    System.out.println("Opção Inválida");
+                    break;
                     }
                 }
+            }while(controlaSwitchEdicao == true);
                 break;
             }
             case "3": {
@@ -92,6 +100,10 @@ public class App {
                 //sair
                 return false;
                 
+            }
+            default : {
+                System.out.println("Opção Inválida");
+                break;
             }
 
             }
