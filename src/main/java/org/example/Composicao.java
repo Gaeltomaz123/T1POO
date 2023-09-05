@@ -77,6 +77,7 @@ public class Composicao {
             if (locomotiva[i] == null) {
                 locomotiva[i] = composicao[posicao].getLocomotiva();
                 composicao[posicao].setLocomotiva(null, posicao);
+                composicao[posicao] = null;
                 break;
             }
         }
@@ -107,7 +108,7 @@ public class Composicao {
         System.out
                 .println("ID:" + composicao[posicao].getidComposicao() + "\nQuantidade Locomotivas: "
                         + composicao[posicao].getQtdLocomotivas() + "\nLocomotiva: "
-                        + composicao[posicao].getLocomotiva() + "\nQuantidade Vagões: "
+                        + composicao[posicao].getLocomotiva().getIdLocomotiva() + "\nQuantidade Vagões: "
                         + composicao[posicao].getQtdVagao() + "\nVagão: " + composicao[posicao].getVagao());
     }
 }
