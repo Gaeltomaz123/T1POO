@@ -59,6 +59,7 @@ public class Composicao {
             setLocomotiva(locomotiva, posicao);
             locomotiva[posicao].setComposicao(composicao[posicao]);
         } else {
+            System.out.println("A locomotiva não foi engatada!");
             estado = false;
         }
         return estado;
@@ -66,13 +67,20 @@ public class Composicao {
 
     public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
-        if (getLocomotiva() != null) {
-            estado = true;
-            composicao[posicao].setLocomotiva ( null , posicao);
-            System.out.println("Locomotiva desengatada");
-        } else {
-            System.out.println("A locomotiva não está engatada");
+        int cont = 0;
+        for(int i = 0; i < locomotiva.length; i++){
+            if(locomotiva[cont] != null){
+                cont++;
+            }
         }
+        locomotiva[cont] = locomotiva[posicao]; 
+        // if (getLocomotiva() != null) {
+        //     estado = true;
+        //     System.out.println("Locomotiva desengatada!");
+        //     composicao[posicao].setLocomotiva (null , posicao);
+        // } else {
+        //     System.out.println("A locomotiva não está engatada");
+        // }
         return estado;
     }
 
