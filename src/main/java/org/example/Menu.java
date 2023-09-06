@@ -106,10 +106,10 @@ public class Menu {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 5");
                                 System.out.println("..........................");
-                                for (int i = 0; i < arrayLocomotivas.size(); i++) {
+                                for (int i = 0; i < arrayVagao.size(); i++) {
                                     Vagao vagao = arrayVagao.get(i);
                                     if (vagao != null) {
-                                        System.out.println("Locomotiva " + vagao.getIdVagao() + " está disponível!");
+                                        System.out.println("Vagão " + vagao.getIdVagao() + " está disponível!");
                                         System.out.println("");
                                     }
                                 }
