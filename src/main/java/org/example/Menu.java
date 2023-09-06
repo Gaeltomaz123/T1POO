@@ -10,9 +10,6 @@ public class Menu {
     private Scanner teclado = new Scanner(System.in);
 
     public void condicoesIniciais() {
-        for (int i = 0; i < 5; i++) {
-            arrayComposicao.add(new Composicao(i, arrayLocomotivas, arrayVagao));
-        }
         for (int i = 0; i < 3; i++) {
             arrayVagao.add(new Vagao(i, 0, null));
         }
@@ -44,6 +41,13 @@ public class Menu {
                     System.out.println("Você selecionou a opção 1");
                     System.out.println("..........................");
                     // criar o trem
+                    System.out.println("Digite o id do Trem a ser criado: ");
+                    int id = teclado.nextInt();
+                    ArrayList<Locomotiva> Locomotivas = new ArrayList<Locomotiva>();
+                    Locomotivas.add(arrayLocomotivas.get(0));
+                    ArrayList<Vagao> Vagoes = new ArrayList<Vagao>();
+                    arrayComposicao.add(new Composicao(id, Locomotivas, Vagoes));
+                    arrayLocomotivas.remove(0);
                     break;
                 }
                 case "2": {

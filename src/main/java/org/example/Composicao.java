@@ -34,6 +34,11 @@ public class Composicao {
         return arrayVagao.get(posicao);
     }
 
+    public boolean criarTrem(int id, ArrayList<Locomotiva> arrayLocomotivas){
+        boolean estado = false;
+        return estado;
+    }
+
     public boolean engataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
         return estado;
