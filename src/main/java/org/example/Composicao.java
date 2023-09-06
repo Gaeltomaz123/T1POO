@@ -46,7 +46,7 @@ public class Composicao {
     public int getQtdVagao() {
         return qtdVagao;
     }
-
+    
     public void setQtdVagao(int qtdVagao) {
         this.qtdVagao = qtdVagao;
     }

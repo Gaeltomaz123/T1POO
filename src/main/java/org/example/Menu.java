@@ -7,6 +7,7 @@ public class Menu {
     private ArrayList<Locomotiva> arrayLocomotivas = new ArrayList<Locomotiva>();
     private ArrayList<Vagao> arrayVagao = new ArrayList<Vagao>();
     private ArrayList<Composicao> arrayComposicao = new ArrayList<Composicao>();
+    private Scanner teclado = new Scanner(System.in);
 
     public void condicoesIniciais() {
         for(int i=0; i<10; i++) {
@@ -22,7 +23,6 @@ public class Menu {
 
     public Menu() {
         condicoesIniciais();
-        Scanner teclado = new Scanner(System.in);
         int escolhaMenu=0;
         int escolhaEditar;
         boolean controlaSwitchEdicao = true;
@@ -100,6 +100,7 @@ public class Menu {
                                 System.out.println("Você selecionou a opção 5");
                                 System.out.println("..........................");
                                 break;
+                                //mostrar os vagoes disponiveis
                             }
                             case 6: {
                                 System.out.println("..........................");
