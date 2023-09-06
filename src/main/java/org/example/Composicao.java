@@ -9,6 +9,7 @@ public class Composicao {
     private int qtdVagao;
     private Vagao vagao;
 
+
     public Composicao(int idComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
             Vagao vagao) {
         this.idComposicao = idComposicao;
@@ -34,11 +35,11 @@ public class Composicao {
         return locomotiva;
     }
 
-    public void setLocomotiva(Locomotiva[] locomotiva, int posicao) {
+    public void setLocomotiva(ArrayList<Locomotiva> locomotiva, int posicao) {
         if (locomotiva == null) {
             this.locomotiva = null;
         } else {
-            this.locomotiva = locomotiva[posicao];
+            this.locomotiva = locomotiva.get(posicao);
         }
 
     }
@@ -59,16 +60,9 @@ public class Composicao {
         this.vagao = vagao;
     }
 
-    public boolean criarComposicao(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+    public boolean criarComposicao(ArrayList<Locomotiva> locomotiva, ArrayList<Composicao> composicao) {
         boolean estado = false;
-        for (int i = 0; i < locomotiva.length; i++) {
-            if (locomotiva[i] != null) {
-                composicao[posicao].setLocomotiva(locomotiva, i);
-                locomotiva[i] = null;
-                composicao[posicao].setQtdLocomotivas(composicao[posicao].getQtdLocomotivas() + 1);
-                break;
-            }
-        }
+        
         return estado;
     }
 

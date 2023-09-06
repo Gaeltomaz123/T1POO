@@ -9,13 +9,13 @@ public class Menu {
     private ArrayList<Composicao> arrayComposicao = new ArrayList<Composicao>();
 
     public void condicoesIniciais() {
-        for(int i=0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayComposicao.add(new Composicao(i, 0, null, 0, null));
         }
-        for(int i=0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayVagao.add(new Vagao(i, 0, null));
         }
-        for(int i=0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayLocomotivas.add(new Locomotiva(i, 0, 0, null));
         }
     }
@@ -23,10 +23,10 @@ public class Menu {
     public Menu() {
         condicoesIniciais();
         Scanner teclado = new Scanner(System.in);
-        int escolhaMenu=0;
+        int escolhaMenu = 0;
         int escolhaEditar;
         boolean controlaSwitchEdicao = true;
-        while(escolhaMenu != 5){
+        while (escolhaMenu != 5) {
             System.out.println("\n[1] ...... Criar um trem");
             System.out.println("\n[2] ...... Editar um trem");
             System.out.println("\n[3] ...... Listar todos os trens criados"); // todos os trens que estao no patio
@@ -41,13 +41,13 @@ public class Menu {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 1");
                     System.out.println("..........................");
-                    // Criar um trem
+                    // criar o trem
                     break;
                 }
                 case 2: {
-                        System.out.println("..........................");
-                        System.out.println("Você selecionou a opção 2");
-                        System.out.println("..........................");
+                    System.out.println("..........................");
+                    System.out.println("Você selecionou a opção 2");
+                    System.out.println("..........................");
                     do {
                         System.out.println("\n[1] ...... Inserir uma locomotiva");
                         System.out.println("\n[2] ...... Inserir um vagão");
@@ -89,7 +89,8 @@ public class Menu {
                                 for (int i = 0; i < arrayLocomotivas.size(); i++) {
                                     Locomotiva locomotiva = arrayLocomotivas.get(i);
                                     if (locomotiva != null) {
-                                        System.out.println("Locomotiva " + locomotiva.getIdLocomotiva() + " está disponível!");
+                                        System.out.println(
+                                                "Locomotiva " + locomotiva.getIdLocomotiva() + " está disponível!");
                                         System.out.println("");
                                     }
                                 }
@@ -99,6 +100,13 @@ public class Menu {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 5");
                                 System.out.println("..........................");
+                                for (int i = 0; i < arrayLocomotivas.size(); i++) {
+                                    Vagao vagao = arrayVagao.get(i);
+                                    if (vagao != null) {
+                                        System.out.println("Locomotiva " + vagao.getIdVagao() + " está disponível!");
+                                        System.out.println("");
+                                    }
+                                }
                                 break;
                             }
                             case 6: {
@@ -121,13 +129,13 @@ public class Menu {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 3");
                     System.out.println("..........................");
-                    if(arrayComposicao.isEmpty()){
+                    if (arrayComposicao.isEmpty()) {
                         System.out.println("Nenhum trem no pátio!\n");
                     } else {
                         for (int i = 0; i < arrayComposicao.size(); i++) {
-                            arrayComposicao.get(i).toString(arrayComposicao, i);;
+                            arrayComposicao.get(i).toString(arrayComposicao, i);
                             System.out.println();
-                        } 
+                        }
                     }
                     break;
                 }
@@ -147,6 +155,6 @@ public class Menu {
                 }
 
             }
+        }
     }
-}
 }
