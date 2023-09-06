@@ -4,19 +4,14 @@ import java.util.ArrayList;
 
 public class Composicao {
     private int idComposicao;
-    private int qtdLocomotivas;
-    private Locomotiva locomotiva;
-    private int qtdVagao;
-    private Vagao vagao;
+    private ArrayList<Locomotiva> arrayLocomotivas;
+    private ArrayList<Vagao> arrayVagao;
 
 
-    public Composicao(int idComposicao, int qtdLocomotivas, Locomotiva locomotiva, int qtdVagao,
-            Vagao vagao) {
+    public Composicao(int idComposicao, ArrayList<Locomotiva> arrayLocomotivas, ArrayList<Vagao> arrayVagao) {
         this.idComposicao = idComposicao;
-        this.qtdLocomotivas = qtdLocomotivas;
-        this.locomotiva = locomotiva;
-        this.qtdVagao = qtdVagao;
-        this.vagao = vagao;
+        this.arrayLocomotivas = arrayLocomotivas;
+        this.arrayVagao = arrayVagao;
     }
 
     public int getidComposicao() {
@@ -24,60 +19,19 @@ public class Composicao {
     }
 
     public int getQtdLocomotivas() {
-        return qtdLocomotivas;
+        return arrayLocomotivas.size();
     }
 
-    public void setQtdLocomotivas(int qtdLocomotivas) {
-        this.qtdLocomotivas = qtdLocomotivas;
-    }
-
-    public Locomotiva getLocomotiva() {
-        return locomotiva;
-    }
-
-    public void setLocomotiva(ArrayList<Locomotiva> locomotiva, int posicao) {
-        if (locomotiva == null) {
-            this.locomotiva = null;
-        } else {
-            this.locomotiva = locomotiva.get(posicao);
-        }
-
+    public Locomotiva getLocomotiva(int posicao) {
+        return arrayLocomotivas.get(posicao);
     }
 
     public int getQtdVagao() {
-        return qtdVagao;
-    }
-    
-    public void setQtdVagao(int qtdVagao) {
-        this.qtdVagao = qtdVagao;
+        return arrayVagao.size();
     }
 
-    public Vagao getVagao() {
-        return vagao;
-    }
-
-    public void setVagao(Vagao vagao) {
-        this.vagao = vagao;
-    }
-
-    public boolean criarComposicao(ArrayList<Locomotiva> locomotiva, ArrayList<Composicao> composicao) {
-        boolean estado = false;
-        
-        return estado;
-    }
-
-    public boolean apagarComposicao(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
-        boolean estado = false;
-
-        for (int i = 0; i < locomotiva.length; i++) {
-            if (locomotiva[i] == null) {
-                locomotiva[i] = composicao[posicao].getLocomotiva();
-                composicao[posicao].setLocomotiva(null, posicao);
-                composicao[posicao] = null;
-                break;
-            }
-        }
-        return estado;
+    public Vagao getVagao(int posicao) {
+        return arrayVagao.get(posicao);
     }
 
     public boolean engataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
@@ -85,12 +39,12 @@ public class Composicao {
         return estado;
     }
 
-    public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+    public boolean engataVagao(Vagao vagao) {
         boolean estado = false;
         return estado;
     }
 
-    public boolean engataVagao(Vagao vagao) {
+    public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
         boolean estado = false;
         return estado;
     }
@@ -101,10 +55,15 @@ public class Composicao {
     }
 
     public void toString(ArrayList<Composicao> composicao, int posicao) {
-        System.out
-                .println("ID:" + composicao.get(posicao).getidComposicao() + "\nQuantidade Locomotivas: "
-                        + composicao.get(posicao).getQtdLocomotivas() + "\nLocomotiva: "
-                        + composicao.get(posicao).getLocomotiva() + "\nQuantidade Vagões: "
-                        + composicao.get(posicao).getQtdVagao() + "\nVagão: " + composicao.get(posicao).getVagao());
+        System.out.println("Id do Trem:" + composicao.get(posicao).getidComposicao() 
+        + "\nQuantidade Locomotivas: " + composicao.get(posicao).getQtdLocomotivas()
+        + "\nLocomotivas: "); for(int i=0; i<getQtdLocomotivas(); i++){
+            System.out.println("Id da Locomotiva: " + composicao.get(posicao).arrayLocomotivas.get(i).getIdLocomotiva());
+        }
+        System.out.println("\nQuantidade Vagões: " + composicao.get(posicao).getQtdVagao()
+        + "\nVagoẽs: "); for(int i=0; i<getQtdVagao(); i++){
+            System.out.println("Id do Vagao: " + composicao.get(posicao).arrayVagao.get(i).getIdVagao());
+        };
+        System.out.println("..........................");
     }
 }

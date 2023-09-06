@@ -10,33 +10,25 @@ public class Menu {
     private Scanner teclado = new Scanner(System.in);
 
     public void condicoesIniciais() {
-        for (int i = 0; i < 10; i++) {
-            arrayComposicao.add(new Composicao(i, 0, null, 0, null));
+        for (int i = 0; i < 5; i++) {
+            arrayComposicao.add(new Composicao(i, arrayLocomotivas, arrayVagao));
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             arrayVagao.add(new Vagao(i, 0, null));
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             arrayLocomotivas.add(new Locomotiva(i, 0, 0, null));
         }
     }
 
     public Menu() {
         condicoesIniciais();
-<<<<<<< HEAD
-        Scanner teclado = new Scanner(System.in);
-        int escolhaMenu = 0;
-        int escolhaEditar;
-        boolean controlaSwitchEdicao = true;
-        while (escolhaMenu != 5) {
-=======
         String escolhaMenu = "0";
         String escolhaEditar;
         boolean controlaSwitchEdicao = true;
         boolean controlaSwitchMenu = true;
         while(escolhaMenu != "5"){
             do{
->>>>>>> 5f52d514552da73fe65b98e5a7c1525a24bc86f5
             System.out.println("\n[1] ...... Criar um trem");
             System.out.println("\n[2] ...... Editar um trem");
             System.out.println("\n[3] ...... Listar todos os trens criados"); // todos os trens que estao no patio
@@ -54,17 +46,10 @@ public class Menu {
                     // criar o trem
                     break;
                 }
-<<<<<<< HEAD
-                case 2: {
-                    System.out.println("..........................");
-                    System.out.println("Você selecionou a opção 2");
-                    System.out.println("..........................");
-=======
                 case "2": {
                         System.out.println("..........................");
                         System.out.println("Você selecionou a opção 2");
                         System.out.println("..........................");
->>>>>>> 5f52d514552da73fe65b98e5a7c1525a24bc86f5
                     do {
                         System.out.println("\n[1] ...... Inserir uma locomotiva");
                         System.out.println("\n[2] ...... Inserir um vagão");
@@ -180,12 +165,8 @@ public class Menu {
                 }
                 }
 
-<<<<<<< HEAD
-            }
-        }
-=======
             }while(controlaSwitchMenu == true);
             break;
->>>>>>> 5f52d514552da73fe65b98e5a7c1525a24bc86f5
+        }
     }
 }
