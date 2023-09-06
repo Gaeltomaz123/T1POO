@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Composicao {
     private int idComposicao;
     private int qtdLocomotivas;
@@ -104,11 +106,11 @@ public class Composicao {
         return estado;
     }
 
-    public void toString(Composicao[] composicao, int posicao) {
+    public void toString(ArrayList<Composicao> composicao, int posicao) {
         System.out
-                .println("ID:" + composicao[posicao].getidComposicao() + "\nQuantidade Locomotivas: "
-                        + composicao[posicao].getQtdLocomotivas() + "\nLocomotiva: "
-                        + composicao[posicao].getLocomotiva().getIdLocomotiva() + "\nQuantidade Vagões: "
-                        + composicao[posicao].getQtdVagao() + "\nVagão: " + composicao[posicao].getVagao());
+                .println("ID:" + composicao.get(posicao).getidComposicao() + "\nQuantidade Locomotivas: "
+                        + composicao.get(posicao).getQtdLocomotivas() + "\nLocomotiva: "
+                        + composicao.get(posicao).getLocomotiva() + "\nQuantidade Vagões: "
+                        + composicao.get(posicao).getQtdVagao() + "\nVagão: " + composicao.get(posicao).getVagao());
     }
 }

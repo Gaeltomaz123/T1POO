@@ -1,36 +1,37 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
-    private Locomotiva[] arrayLocomotivas = new Locomotiva[5];
-    private Vagao[] arrayVagao = new Vagao[5];
-    private Composicao[] arrayComposicao = new Composicao[5];
+    private ArrayList<Locomotiva> arrayLocomotivas = new ArrayList<Locomotiva>();
+    private ArrayList<Vagao> arrayVagao = new ArrayList<Vagao>();
+    private ArrayList<Composicao> arrayComposicao = new ArrayList<Composicao>();
 
     public void criarVagoesIniciais() {
-        arrayComposicao[0] = new Composicao(0, 0, null, 0, null);
-        arrayComposicao[1] = new Composicao(1, 0, null, 0, null);
-        arrayComposicao[2] = new Composicao(2, 0, null, 0, null);
-        arrayComposicao[3] = new Composicao(3, 0, null, 0, null);
-        arrayComposicao[4] = new Composicao(4, 0, null, 0, null);
+        arrayComposicao.add(new Composicao(0, 0, null, 0, null));
+        arrayComposicao.add(new Composicao(1, 0, null, 0, null));
+        arrayComposicao.add(new Composicao(2, 0, null, 0, null));
+        arrayComposicao.add(new Composicao(3, 0, null, 0, null));
+        arrayComposicao.add(new Composicao(4, 0, null, 0, null));
 
-        arrayLocomotivas[0] = new Locomotiva(0, 0, 0, null);
-        arrayLocomotivas[1] = new Locomotiva(1, 0, 0, null);
-        arrayLocomotivas[2] = new Locomotiva(2, 0, 0, null);
-        arrayLocomotivas[3] = new Locomotiva(3, 0, 0, null);
-        arrayLocomotivas[4] = new Locomotiva(4, 0, 0, null);
+        arrayLocomotivas.add(new Locomotiva(0, 0, 0, null));
+        arrayLocomotivas.add(new Locomotiva(1, 0, 0, null));
+        arrayLocomotivas.add(new Locomotiva(2, 0, 0, null));
+        arrayLocomotivas.add(new Locomotiva(3, 0, 0, null));
+        arrayLocomotivas.add(new Locomotiva(4, 0, 0, null));
 
-        arrayVagao[0] = new Vagao(0, 0, null);
+        arrayVagao.add(new Vagao(0, 0, null));
 
-        arrayComposicao[0].criarComposicao(arrayLocomotivas, 0, arrayComposicao);
-        arrayComposicao[1].criarComposicao(arrayLocomotivas, 1, arrayComposicao);
-        arrayComposicao[2].criarComposicao(arrayLocomotivas, 2, arrayComposicao);
-        arrayComposicao[3].criarComposicao(arrayLocomotivas, 3, arrayComposicao);
-        arrayComposicao[4].criarComposicao(arrayLocomotivas, 4, arrayComposicao);
+        //arrayComposicao[0].criarComposicao(arrayLocomotivas, 0, arrayComposicao);
+        //arrayComposicao[1].criarComposicao(arrayLocomotivas, 1, arrayComposicao);
+        //arrayComposicao[2].criarComposicao(arrayLocomotivas, 2, arrayComposicao);
+        //arrayComposicao[3].criarComposicao(arrayLocomotivas, 3, arrayComposicao);
+        //arrayComposicao[4].criarComposicao(arrayLocomotivas, 4, arrayComposicao);
 
-        arrayComposicao[0].apagarComposicao(arrayLocomotivas, 0, arrayComposicao);
-        arrayComposicao[2].apagarComposicao(arrayLocomotivas, 2, arrayComposicao);
-        arrayComposicao[4].apagarComposicao(arrayLocomotivas, 4, arrayComposicao);
+        //arrayComposicao[0].apagarComposicao(arrayLocomotivas, 0, arrayComposicao);
+        //arrayComposicao[2].apagarComposicao(arrayLocomotivas, 2, arrayComposicao);
+        //arrayComposicao[4].apagarComposicao(arrayLocomotivas, 4, arrayComposicao);
 
 
     }
@@ -103,10 +104,10 @@ public class Menu {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 4");
                                 System.out.println("..........................");
-                                for (int i = 0; i < arrayLocomotivas.length; i++) {
-                                    if (arrayLocomotivas[i] != null) {
-                                        System.out.println("Locomotiva " + arrayLocomotivas[i].getIdLocomotiva() +
-                                                " está disponível!");
+                                for (int i = 0; i < arrayLocomotivas.size(); i++) {
+                                    Locomotiva locomotiva = arrayLocomotivas.get(i);
+                                    if (locomotiva != null) {
+                                        System.out.println("Locomotiva" + locomotiva.getIdLocomotiva() + " está disponível!");
                                         System.out.println("");
                                     }
                                 }
@@ -139,14 +140,15 @@ public class Menu {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 3");
                     System.out.println("..........................");
-                    for (int i = 0; i < arrayComposicao.length; i++) {
-                if (arrayComposicao[i] != null) {
-                    arrayComposicao[i].toString(arrayComposicao, i);
-                    System.out.println();
-                } else {
-                    System.out.println("Composição " + i + " não existe!\n");
-                }
-            }
+                    for (int i = 0; i < arrayComposicao.size(); i++) {
+                        Composicao composicao = arrayComposicao.get(i);
+                        if (composicao != null) {
+                            composicao.toString(arrayComposicao, i);;
+                            System.out.println();
+                        } else {
+                            System.out.println("Composição " + i + " não existe!\n");
+                        }
+                    }
                     break;
                 }
                 case 4: {
