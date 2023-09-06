@@ -8,36 +8,20 @@ public class Menu {
     private ArrayList<Vagao> arrayVagao = new ArrayList<Vagao>();
     private ArrayList<Composicao> arrayComposicao = new ArrayList<Composicao>();
 
-    public void criarVagoesIniciais() {
-        arrayComposicao.add(new Composicao(0, 0, null, 0, null));
-        arrayComposicao.add(new Composicao(1, 0, null, 0, null));
-        arrayComposicao.add(new Composicao(2, 0, null, 0, null));
-        arrayComposicao.add(new Composicao(3, 0, null, 0, null));
-        arrayComposicao.add(new Composicao(4, 0, null, 0, null));
-
-        arrayLocomotivas.add(new Locomotiva(0, 0, 0, null));
-        arrayLocomotivas.add(new Locomotiva(1, 0, 0, null));
-        arrayLocomotivas.add(new Locomotiva(2, 0, 0, null));
-        arrayLocomotivas.add(new Locomotiva(3, 0, 0, null));
-        arrayLocomotivas.add(new Locomotiva(4, 0, 0, null));
-
-        arrayVagao.add(new Vagao(0, 0, null));
-
-        //arrayComposicao[0].criarComposicao(arrayLocomotivas, 0, arrayComposicao);
-        //arrayComposicao[1].criarComposicao(arrayLocomotivas, 1, arrayComposicao);
-        //arrayComposicao[2].criarComposicao(arrayLocomotivas, 2, arrayComposicao);
-        //arrayComposicao[3].criarComposicao(arrayLocomotivas, 3, arrayComposicao);
-        //arrayComposicao[4].criarComposicao(arrayLocomotivas, 4, arrayComposicao);
-
-        //arrayComposicao[0].apagarComposicao(arrayLocomotivas, 0, arrayComposicao);
-        //arrayComposicao[2].apagarComposicao(arrayLocomotivas, 2, arrayComposicao);
-        //arrayComposicao[4].apagarComposicao(arrayLocomotivas, 4, arrayComposicao);
-
-
+    public void condicoesIniciais() {
+        for(int i=0; i<10; i++) {
+            arrayComposicao.add(new Composicao(i, 0, null, 0, null));
+        }
+        for(int i=0; i<10; i++) {
+            arrayVagao.add(new Vagao(i, 0, null));
+        }
+        for(int i=0; i<10; i++) {
+            arrayLocomotivas.add(new Locomotiva(i, 0, 0, null));
+        }
     }
 
     public Menu() {
-        criarVagoesIniciais();
+        condicoesIniciais();
         Scanner teclado = new Scanner(System.in);
         int escolhaMenu=0;
         int escolhaEditar;
@@ -65,8 +49,6 @@ public class Menu {
                         System.out.println("Você selecionou a opção 2");
                         System.out.println("..........................");
                     do {
-
-                        
                         System.out.println("\n[1] ...... Inserir uma locomotiva");
                         System.out.println("\n[2] ...... Inserir um vagão");
                         System.out.println("\n[3] ...... Remover um vagão");
@@ -107,7 +89,7 @@ public class Menu {
                                 for (int i = 0; i < arrayLocomotivas.size(); i++) {
                                     Locomotiva locomotiva = arrayLocomotivas.get(i);
                                     if (locomotiva != null) {
-                                        System.out.println("Locomotiva" + locomotiva.getIdLocomotiva() + " está disponível!");
+                                        System.out.println("Locomotiva " + locomotiva.getIdLocomotiva() + " está disponível!");
                                         System.out.println("");
                                     }
                                 }
@@ -125,7 +107,6 @@ public class Menu {
                                 System.out.println("..........................");
                                 controlaSwitchEdicao = false;
                                 break;
-
                             }
                             default: {
                                 System.out.println("Opção Inválida");
@@ -140,14 +121,13 @@ public class Menu {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 3");
                     System.out.println("..........................");
-                    for (int i = 0; i < arrayComposicao.size(); i++) {
-                        Composicao composicao = arrayComposicao.get(i);
-                        if (composicao != null) {
-                            composicao.toString(arrayComposicao, i);;
+                    if(arrayComposicao.isEmpty()){
+                        System.out.println("Nenhum trem no pátio!\n");
+                    } else {
+                        for (int i = 0; i < arrayComposicao.size(); i++) {
+                            arrayComposicao.get(i).toString(arrayComposicao, i);;
                             System.out.println();
-                        } else {
-                            System.out.println("Composição " + i + " não existe!\n");
-                        }
+                        } 
                     }
                     break;
                 }
