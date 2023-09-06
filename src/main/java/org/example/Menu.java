@@ -23,10 +23,12 @@ public class Menu {
 
     public Menu() {
         condicoesIniciais();
-        int escolhaMenu=0;
-        int escolhaEditar;
+        String escolhaMenu = "0";
+        String escolhaEditar;
         boolean controlaSwitchEdicao = true;
-        while(escolhaMenu != 5){
+        boolean controlaSwitchMenu = true;
+        while(escolhaMenu != "5"){
+            do{
             System.out.println("\n[1] ...... Criar um trem");
             System.out.println("\n[2] ...... Editar um trem");
             System.out.println("\n[3] ...... Listar todos os trens criados"); // todos os trens que estao no patio
@@ -34,17 +36,17 @@ public class Menu {
             System.out.println("\n[5] ...... Sair");
             System.out.println("\n..................................");
             System.out.println("");
-            escolhaMenu = teclado.nextInt();
-            System.out.println("\f");
+            escolhaMenu = teclado.next();
+            System.out.println("");
             switch (escolhaMenu) {
-                case 1: {
-                    System.out.println("..........................");
+                case "1": {
+                    System.out.println("..........................");;
                     System.out.println("Você selecionou a opção 1");
                     System.out.println("..........................");
                     // Criar um trem
                     break;
                 }
-                case 2: {
+                case "2": {
                         System.out.println("..........................");
                         System.out.println("Você selecionou a opção 2");
                         System.out.println("..........................");
@@ -58,31 +60,31 @@ public class Menu {
                         System.out.println("\n..................................");
                         System.out.println("");
 
-                        escolhaEditar = teclado.nextInt();
+                        escolhaEditar = teclado.next();
 
                         switch (escolhaEditar) {
-                            case 1: {
+                            case "1": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 1");
                                 System.out.println("..........................");
                                 // inserir uma locomotiva
                                 break;
                             }
-                            case 2: {
+                            case "2": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 2");
                                 System.out.println("..........................");
                                 // inserir um vagão
                                 break;
                             }
-                            case 3: {
+                            case "3": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 3");
                                 System.out.println("..........................");
                                 // remover o ultimo elemento do trem
                                 break;
                             }
-                            case 4: {
+                            case "4": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 4");
                                 System.out.println("..........................");
@@ -95,14 +97,14 @@ public class Menu {
                                 }
                                 break;
                             }
-                            case 5: {
+                            case "5": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 5");
                                 System.out.println("..........................");
                                 break;
                                 //mostrar os vagoes disponiveis
                             }
-                            case 6: {
+                            case "6": {
                                 System.out.println("..........................");
                                 System.out.println("Você selecionou a opção 6");
                                 System.out.println("..........................");
@@ -118,7 +120,7 @@ public class Menu {
                     } while (controlaSwitchEdicao == true);
                     break;
                 }
-                case 3: {
+                case "3": {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 3");
                     System.out.println("..........................");
@@ -132,22 +134,31 @@ public class Menu {
                     }
                     break;
                 }
-                case 4: {
+                case "4": {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 4");
                     System.out.println("..........................");
                     // Desfazer um trem
                     break;
                 }
-                case 5: {
-                    // sair
+                case "5": {
+                    System.out.println("..........................");
+                    System.out.println(" ");
+                    System.out.println("Fim do Programa");
+                    System.out.println(" ");
+                    System.out.println("..........................");
+
+                    controlaSwitchMenu = false;
+                    break;
                 }
                 default: {
                     System.out.println("Opção Inválida");
                     break;
                 }
+                }
 
-            }
+            }while(controlaSwitchMenu == true);
+            break;
     }
 }
 }
