@@ -150,7 +150,25 @@ public class Menu {
                     System.out.println("..........................");
                     System.out.println("Você selecionou a opção 4");
                     System.out.println("..........................");
-                    // Desfazer um trem
+                    // remover trem
+                    System.out.println("Digite o id do trem a ser removido: ");
+                    int id = teclado.nextInt();
+                    Composicao composicao = null;
+                    for(int i=0; i<arrayComposicao.size(); i++){
+                        if(arrayComposicao.get(i).getidComposicao() == id){
+                            System.out.println(arrayComposicao.get(i).getidComposicao());
+                            composicao = arrayComposicao.get(i);
+                        }
+                    }
+                    System.out.println(composicao.toString());
+                    /*
+                    for(int i=0; i<composicao.getQtdLocomotivas(); i++){
+                        arrayLocomotivas.add(composicao.getLocomotiva(i));
+                    }
+                    for(int i=0; i<composicao.getQtdVagao(); i++){
+                        arrayVagao.add(composicao.getVagao(i));
+                    }
+                    arrayComposicao.remove(composicao.getidComposicao());*/
                     break;
                 }
                 case "5": {
