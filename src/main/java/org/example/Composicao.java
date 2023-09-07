@@ -65,16 +65,16 @@ public class Composicao {
                 }
                 novaCapacidade = Math.ceil(novaCapacidade * 10) / 10;
                 locomotiva.setPesoMaximo(novaCapacidade);
-                arrayVagao.add(vagao);
                 System.out.println(
                         "Locomotiva ID: " + locomotiva.getIdLocomotiva() + ", Capacidade Atual: " + novaCapacidade);
-            }else{
+            } else {
                 estado = false;
                 System.out.println("O peso foi excedido!");
             }
-
         }
-
+        if (estado == true) {
+            arrayVagao.add(vagao);
+        }
         return estado;
     }
 
