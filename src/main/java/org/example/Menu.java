@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Menu {
     private ArrayList<Locomotiva> arrayLocomotivas = new ArrayList<Locomotiva>();
@@ -42,13 +43,24 @@ public class Menu {
                         System.out.println("Você selecionou a opção 1");
                         System.out.println("..........................");
                         // criar o trem
-                        System.out.println("Digite o id do Trem a ser criado: ");
-                        int id = teclado.nextInt();
+                        boolean continua = true;
+                        int id=0;
+                        do {
+                            try {
+                                System.out.println("Digite o id do Trem a ser criado: ");
+                                id = teclado.nextInt();
+                                continua = false;
+                            } catch (InputMismatchException erro1) {
+                                System.err.println("Não é permitido inserir letras, informe apenas números inteiros!");
+                                teclado.nextLine();
+                            }
+                        } while(continua);
                         ArrayList<Locomotiva> Locomotivas = new ArrayList<Locomotiva>();
                         Locomotivas.add(arrayLocomotivas.get(0));
                         ArrayList<Vagao> Vagoes = new ArrayList<Vagao>();
                         arrayComposicao.add(new Composicao(id, Locomotivas, Vagoes));
                         arrayLocomotivas.remove(0);
+                        System.out.println("\nTrem criado com sucesso!");
                         break;
                     }
                     case "2": {
@@ -87,7 +99,7 @@ public class Menu {
                                     System.out.println("..........................");
                                     System.out.println("Você selecionou a opção 2");
                                     System.out.println("..........................");
-                                    System.out.println("Digite o id da locomotiva a ser adicionada: ");
+                                    System.out.println("Digite o id do trem: ");
                                     int id = teclado.nextInt();
                                     for (int i = 0; i < arrayComposicao.size(); i++) {
                                         if (arrayComposicao.get(i).getidComposicao() == id) {
@@ -172,20 +184,17 @@ public class Menu {
                         Composicao composicao = null;
                         for (int i = 0; i < arrayComposicao.size(); i++) {
                             if (arrayComposicao.get(i).getidComposicao() == id) {
-                                System.out.println(arrayComposicao.get(i).getidComposicao());
                                 composicao = arrayComposicao.get(i);
                             }
                         }
                         System.out.println(composicao.toString());
-                        /*
-                         * for(int i=0; i<composicao.getQtdLocomotivas(); i++){
-                         * arrayLocomotivas.add(composicao.getLocomotiva(i));
-                         * }
-                         * for(int i=0; i<composicao.getQtdVagao(); i++){
-                         * arrayVagao.add(composicao.getVagao(i));
-                         * }
-                         * arrayComposicao.remove(composicao.getidComposicao());
-                         */
+                        for(int i=0; i<composicao.getQtdLocomotivas(); i++){
+                            arrayLocomotivas.add(composicao.getLocomotiva(i));
+                        }
+                        for(int i=0; i<composicao.getQtdVagao(); i++){
+                            arrayVagao.add(composicao.getVagao(i));
+                        }
+                        arrayComposicao.remove(composicao);
                         break;
                     }
                     case "5": {
