@@ -15,7 +15,7 @@ public class Menu {
             arrayVagao.add(new Vagao(i, 0, null));
         }
         for (int i = 0; i < 3; i++) {
-            arrayLocomotivas.add(new Locomotiva(i, 0, 0, null));
+            arrayLocomotivas.add(new Locomotiva(i, 1000, 10, null));
         }
     }
 
@@ -25,7 +25,6 @@ public class Menu {
         String escolhaEditar;
         boolean controlaSwitchEdicao = true;
         boolean controlaSwitchMenu = true;
-        while (escolhaMenu != "5") {
             do {
                 System.out.println("\n[1] ...... Criar um trem");
                 System.out.println("\n[2] ...... Editar um trem");
@@ -64,13 +63,26 @@ public class Menu {
                         break;
                     }
                     case "2": {
+                        if(arrayComposicao.isEmpty()){
+                            System.out.println("Ainda não existe nenhum trem!");
+                            break;
+                        }
                         System.out.println("..........................");
                         System.out.println("Você selecionou a opção 2");
                         System.out.println("..........................");
+                        System.out.println("Digite o id do trem a ser editado: ");
+                        int id = teclado.nextInt();
+                        for(int j=0; j < arrayComposicao.size(); j++) {
+                            while(arrayComposicao.get(j).getidComposicao() != id){
+                                System.out.println("Este trem não existe!");
+                                System.out.println("Digite o id do trem a ser editado: ");
+                                id = teclado.nextInt();
+                            }
+                        }
                         do {
-                            System.out.println("\n[1] ...... Inserir uma locomotiva");
-                            System.out.println("\n[2] ...... Inserir um vagão");
-                            System.out.println("\n[3] ...... Remover um vagão");
+                            System.out.println("\n[1] ...... Inserir locomotiva");
+                            System.out.println("\n[2] ...... Inserir vagão");
+                            System.out.println("\n[3] ...... Remover último elemento do trem");
                             System.out.println("\n[4] ...... Listar locomotivas livres");
                             System.out.println("\n[5] ...... Listar os vagões livres");
                             System.out.println("\n[6] ...... Voltar ao menu");
@@ -84,36 +96,55 @@ public class Menu {
                                     System.out.println("..........................");
                                     System.out.println("Você selecionou a opção 1");
                                     System.out.println("..........................");
-                                    System.out.println("Digite o id do trem: ");
-                                    int id = teclado.nextInt();
-                                    for (int i = 0; i < arrayComposicao.size(); i++) {
-                                        if (arrayComposicao.get(i).getidComposicao() == id) {
-                                            arrayComposicao.get(i).engataLocomotiva(arrayLocomotivas.get(0));
-                                            arrayLocomotivas.remove(0);
+                                        for (int i = 0; i < arrayComposicao.size(); i++) {
+                                            if (arrayComposicao.get(i).getidComposicao() == id) {
+                                                if (arrayComposicao.get(i).getQtdVagao() == 0){
+                                                    arrayComposicao.get(i).engataLocomotiva(arrayLocomotivas.get(0));
+                                                    arrayLocomotivas.remove(0);
+                                                    System.out.println("Locomotiva adicionada com sucesso!");
+                                                } else {
+                                                    System.out.println("Não é possível adicionar uma locomotiva após um vagão!");
+                                                }
+                                            }
                                         }
-                                    }
-                                    // inserir locomotiva
                                     break;
                                 }
                                 case "2": {
                                     System.out.println("..........................");
                                     System.out.println("Você selecionou a opção 2");
                                     System.out.println("..........................");
-                                    System.out.println("Digite o id do trem: ");
-                                    int id = teclado.nextInt();
                                     for (int i = 0; i < arrayComposicao.size(); i++) {
                                         if (arrayComposicao.get(i).getidComposicao() == id) {
                                             arrayComposicao.get(i).engataVagao(arrayVagao.get(0));
                                             arrayVagao.remove(0);
                                         }
                                     }
+                                    System.out.println("Vagão adicionado com sucesso!");
                                     break;
                                 }
                                 case "3": {
                                     System.out.println("..........................");
                                     System.out.println("Você selecionou a opção 3");
                                     System.out.println("..........................");
-                                    // remover o ultimo elemento do trem
+                                    for(int i=0; i<arrayComposicao.size();){
+                                        Composicao composicao = arrayComposicao.get(i);
+                                        if(composicao.getQtdVagao() > 0){
+                                            arrayVagao.add(composicao.getVagao(composicao.getQtdVagao()-1));
+                                            composicao.desengataVagao(composicao.getVagao(composicao.getQtdVagao()-1));
+                                            System.out.println("Vagão removido!");
+                                            break;
+                                        } else {
+                                            if (composicao.getQtdLocomotivas() > 1){
+                                                arrayLocomotivas.add(composicao.getLocomotiva(composicao.getQtdLocomotivas() - 1));
+                                                composicao.desengataLocomotiva(composicao.getLocomotiva(composicao.getQtdLocomotivas() - 1));
+                                                System.out.println("Locomotiva removida!");
+                                                break;
+                                            } else {
+                                                System.out.println("Não é possível remover a locomotiva inicial!");
+                                                break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 }
                                 case "4": {
@@ -203,7 +234,6 @@ public class Menu {
                         System.out.println("Fim do Programa");
                         System.out.println(" ");
                         System.out.println("..........................");
-
                         controlaSwitchMenu = false;
                         break;
                     }
@@ -212,9 +242,6 @@ public class Menu {
                         break;
                     }
                 }
-
             } while (controlaSwitchMenu == true);
-            break;
         }
     }
-}

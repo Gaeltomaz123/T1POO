@@ -51,13 +51,15 @@ public class Composicao {
         return estado;
     }
 
-    public boolean desengataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+    public boolean desengataLocomotiva(Locomotiva locomotiva) {
         boolean estado = false;
+        arrayLocomotivas.remove(locomotiva);
         return estado;
     }
 
     public boolean desengataVagao(Vagao vagao) {
         boolean estado = false;
+        arrayVagao.remove(vagao);
         return estado;
     }
 
