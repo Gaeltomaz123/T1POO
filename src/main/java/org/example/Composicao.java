@@ -7,7 +7,6 @@ public class Composicao {
     private ArrayList<Locomotiva> arrayLocomotivas;
     private ArrayList<Vagao> arrayVagao;
 
-
     public Composicao(int idComposicao, ArrayList<Locomotiva> arrayLocomotivas, ArrayList<Vagao> arrayVagao) {
         this.idComposicao = idComposicao;
         this.arrayLocomotivas = arrayLocomotivas;
@@ -34,20 +33,48 @@ public class Composicao {
         return arrayVagao.get(posicao);
     }
 
-    public boolean criarTrem(int id, ArrayList<Locomotiva> arrayLocomotivas){
+    public boolean criarTrem(int id, ArrayList<Locomotiva> arrayLocomotivas) {
         boolean estado = false;
         return estado;
     }
 
     public boolean engataLocomotiva(Locomotiva locomotiva) {
         boolean estado = false;
-        arrayLocomotivas.add(locomotiva);   
+        arrayLocomotivas.add(locomotiva);
+        double reducao = 0.10;
+        double capacidadeTotal = locomotiva.getPesoMaximo();
+        for (int i = 0; i < arrayLocomotivas.size(); i++) {
+            Locomotiva l = arrayLocomotivas.get(i);
+            capacidadeTotal += l.getPesoMaximo() * reducao;
+            l.setPesoMaximo(capacidadeTotal);
+        }
+        System.out.println("Nova capacidade total: " + capacidadeTotal);
         return estado;
     }
 
     public boolean engataVagao(Vagao vagao) {
         boolean estado = false;
-        arrayVagao.add(vagao);   
+
+        for (Locomotiva locomotiva : arrayLocomotivas) {
+            if (locomotiva.getPesoMaximo() > 0) {
+                estado = true;
+                double capacidadeAtual = locomotiva.getPesoMaximo();
+                double novaCapacidade = capacidadeAtual - 400;
+                if (novaCapacidade < 400) {
+                    novaCapacidade = 0;
+                }
+                novaCapacidade = Math.ceil(novaCapacidade * 10) / 10;
+                locomotiva.setPesoMaximo(novaCapacidade);
+                arrayVagao.add(vagao);
+                System.out.println(
+                        "Locomotiva ID: " + locomotiva.getIdLocomotiva() + ", Capacidade Atual: " + novaCapacidade);
+            }else{
+                estado = false;
+                System.out.println("O peso foi excedido!");
+            }
+
+        }
+
         return estado;
     }
 
@@ -64,15 +91,19 @@ public class Composicao {
     }
 
     public void toString(ArrayList<Composicao> composicao, int posicao) {
-        System.out.println("Id do Trem:" + composicao.get(posicao).getidComposicao() 
-        + "\nQuantidade Locomotivas: " + composicao.get(posicao).getQtdLocomotivas()
-        + "\nLocomotivas: "); for(int i=0; i<getQtdLocomotivas(); i++){
-            System.out.println("Id da Locomotiva: " + composicao.get(posicao).arrayLocomotivas.get(i).getIdLocomotiva());
+        System.out.println("Id do Trem:" + composicao.get(posicao).getidComposicao()
+                + "\nQuantidade Locomotivas: " + composicao.get(posicao).getQtdLocomotivas()
+                + "\nLocomotivas: ");
+        for (int i = 0; i < getQtdLocomotivas(); i++) {
+            System.out
+                    .println("Id da Locomotiva: " + composicao.get(posicao).arrayLocomotivas.get(i).getIdLocomotiva());
         }
         System.out.println("\nQuantidade Vagões: " + composicao.get(posicao).getQtdVagao()
-        + "\nVagoẽs: "); for(int i=0; i<getQtdVagao(); i++){
+                + "\nVagoẽs: ");
+        for (int i = 0; i < getQtdVagao(); i++) {
             System.out.println("Id do Vagao: " + composicao.get(posicao).arrayVagao.get(i).getIdVagao());
-        };
+        }
+        ;
         System.out.println("..........................");
     }
 }

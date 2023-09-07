@@ -2,11 +2,11 @@ package org.example;
 
 public class Locomotiva {
     private int idLocomotiva;
-    private float pesoMaximo;
+    private double pesoMaximo;
     private int numeroMaxVagoes;
     private Composicao composicao;
 
-    public Locomotiva(int idLocomotiva, float pesoMaximo, int numeroMaxVagoes, Composicao composicao){
+    public Locomotiva(int idLocomotiva, double pesoMaximo, int numeroMaxVagoes, Composicao composicao){
         this.idLocomotiva = idLocomotiva;
         this.pesoMaximo = pesoMaximo;
         this.numeroMaxVagoes = numeroMaxVagoes;
@@ -21,11 +21,11 @@ public class Locomotiva {
         this.idLocomotiva = idLocomotiva;
     }
 
-    public float getPesoMaximo() {
+    public double getPesoMaximo() {
         return pesoMaximo;
     }
 
-    public void setPesoMaximo(float pesoMaximo) {
+    public void setPesoMaximo(double pesoMaximo) {
         this.pesoMaximo = pesoMaximo;
     }
 

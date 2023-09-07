@@ -11,8 +11,8 @@ public class Menu {
     private Scanner teclado = new Scanner(System.in);
 
     public void condicoesIniciais() {
-        for (int i = 0; i < 3; i++) {
-            arrayVagao.add(new Vagao(i, 0, null));
+        for (int i = 0; i < 5; i++) {
+            arrayVagao.add(new Vagao(i, 200, null));
         }
         for (int i = 0; i < 3; i++) {
             arrayLocomotivas.add(new Locomotiva(i, 1000, 10, null));
@@ -38,7 +38,6 @@ public class Menu {
                 switch (escolhaMenu) {
                     case "1": {
                         System.out.println("..........................");
-                        ;
                         System.out.println("Você selecionou a opção 1");
                         System.out.println("..........................");
                         // criar o trem
@@ -115,11 +114,12 @@ public class Menu {
                                     System.out.println("..........................");
                                     for (int i = 0; i < arrayComposicao.size(); i++) {
                                         if (arrayComposicao.get(i).getidComposicao() == id) {
-                                            arrayComposicao.get(i).engataVagao(arrayVagao.get(0));
-                                            arrayVagao.remove(0);
+                                            if(arrayComposicao.get(i).engataVagao(arrayVagao.get(0)) == true){
+                                                arrayVagao.remove(0);
+                                                System.out.println("Vagão adicionado com sucesso!");
+                                            }
                                         }
                                     }
-                                    System.out.println("Vagão adicionado com sucesso!");
                                     break;
                                 }
                                 case "3": {
