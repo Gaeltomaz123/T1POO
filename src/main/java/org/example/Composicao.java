@@ -39,13 +39,15 @@ public class Composicao {
         return estado;
     }
 
-    public boolean engataLocomotiva(Locomotiva[] locomotiva, int posicao, Composicao[] composicao) {
+    public boolean engataLocomotiva(Locomotiva locomotiva) {
         boolean estado = false;
+        arrayLocomotivas.add(locomotiva);   
         return estado;
     }
 
     public boolean engataVagao(Vagao vagao) {
         boolean estado = false;
+        arrayVagao.add(vagao);   
         return estado;
     }
 
